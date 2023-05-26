@@ -1,6 +1,6 @@
 package example.dto;
 
-public class NewDTO {
+public class NewDTO extends AbstractDTO{
     private String title;
     private String thumbnail;
     private String shortDescription;

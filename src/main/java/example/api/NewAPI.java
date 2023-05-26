@@ -26,15 +26,19 @@ public class NewAPI {
     public NewDTO addNew(@RequestBody NewDTO model) {
         return newService.save(model);
     }
+    //thay vi dung new?q=id. su dung /id de lay param se khac
 
-    @PutMapping(value = "/test")
-    public NewDTO updateNew(@RequestBody NewDTO model) {
+    @PutMapping(value = "/new/{id}")
+    public NewDTO updateNew(@RequestBody NewDTO model,@PathVariable("id")long id) {
+        model.setId(id);
+        newService.save(model);
         return model;
     }
 
-    @DeleteMapping
-    public NewDTO deleteNew(@RequestBody NewDTO model) {
-        return model;
+    @DeleteMapping(value="/new")
+    public void deleteNew(@RequestBody long[]id) {
+        newService.delete(id);
+
     }
 
 
